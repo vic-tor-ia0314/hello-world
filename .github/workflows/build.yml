@@ -19,22 +19,8 @@ jobs:
           pip install easygui pyinstaller
 
       - name: Build executable
-        run: |
-          pyinstaller ^
-            --onefile ^
-            --windowed ^
-            --add-data "home.gif;." ^
-            --add-data "night.gif;." ^
-            --add-data "hall.gif;." ^
-            --add-data "field.gif;." ^
-            --add-data "her.gif;." ^
-            --add-data "1.gif;." ^
-            --add-data "2.gif;." ^
-            --add-data "3.gif;." ^
-            --add-data "4.gif;." ^
-            --add-data "5.gif;." ^
-            --add-data "6.gif;." ^
-            main.py
+        shell: cmd
+        run: pyinstaller --onefile --windowed --add-data "home.gif;." --add-data "night.gif;." --add-data "hall.gif;." --add-data "field.gif;." --add-data "her.gif;." --add-data "1.gif;." --add-data "2.gif;." --add-data "3.gif;." --add-data "4.gif;." --add-data "5.gif;." --add-data "6.gif;." main.py
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
