@@ -16,10 +16,21 @@ v10 20/05/2026
 v12 26/05/2026
 '''
 
+
 from easygui import * # type: ignore
 #egdemo()
 
 import sys
+import os
+
+def resource_path(relative_path):
+    """Get absolute path to resource (works for dev + PyInstaller)"""
+    try:
+        base_path = sys._MEIPASS  # PyInstaller temp folder
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 #helper function
 def msgBox(text, title, choice):
@@ -292,11 +303,11 @@ def day3(amity, name):
     msgBox("Anyway, I'll give you the first image now.", title, "OK")
     
     #sorting choice boxes
-    sort1 = buttonbox("Filename: her.gif", title, sortlist, "her.gif")
-    sort2 = buttonbox("Filename: field.gif", title, sortlist, "field.gif")
-    sort3 = buttonbox("Filename: hall.gif", title, sortlist, "hall.gif")
-    sort4 = buttonbox("Filename: home.gif", title, sortlist, "home.gif")
-    sort5 = buttonbox("Filename: night.gif", title, sortlist, "night.gif")
+    sort1 = buttonbox("Filename: her.gif", title, sortlist, resource_path("her.gif"))
+    sort2 = buttonbox("Filename: field.gif", title, sortlist, resource_path("field.gif"))
+    sort3 = buttonbox("Filename: hall.gif", title, sortlist, resource_path("hall.gif"))
+    sort4 = buttonbox("Filename: home.gif", title, sortlist, resource_path("home.gif"))
+    sort5 = buttonbox("Filename: night.gif", title, sortlist, resource_path("night.gif"))
     
     #if you sort to a specific category of ???
     if sort1 == sortlist[4] or sort2 == sortlist[4] or sort3 == sortlist[4] or sort4 == sortlist[4] or sort5 == sortlist[4]:
@@ -429,12 +440,12 @@ def day6(amity, name):
     msgBox("Those uncanny images, your rambling, your appearance all helped a lot!", title, "OK")
     msgBox("Here, I'll show you some images I've taken from the virtual world now!", title, "OK")
     
-    msgbox("Image 1:", title, "Next", "1.gif")
-    msgbox("Image 2:", title, "Next", "2.gif")
-    msgbox("Image 3:", title, "Next", "3.gif")
-    msgbox("Image 4:", title, "Next", "4.gif")
-    msgbox("Image 5:", title, "Next", "5.gif")
-    msgbox("Image 6:", title, "Next", "6.gif")
+    msgbox("Image 1:", title, "Next", resource_path("1.gif"))
+    msgbox("Image 2:", title, "Next", resource_path("2.gif"))
+    msgbox("Image 3:", title, "Next", resource_path("3.gif"))
+    msgbox("Image 4:", title, "Next", resource_path("4.gif"))
+    msgbox("Image 5:", title, "Next", resource_path("5.gif"))
+    msgbox("Image 6:", title, "Next", resource_path("6.gif"))
 
     choice1 = buttonbox("I tried my best to replicate the real world. Do you like them?", title, yn)
     
