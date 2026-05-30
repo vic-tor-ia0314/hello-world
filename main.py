@@ -15,7 +15,6 @@ v9 17/05/2026
 v10 20/05/2026
 v12 26/05/2026
 '''
-import requests
 
 from easygui import * # type: ignore
 #egdemo()
